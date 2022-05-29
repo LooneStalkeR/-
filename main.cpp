@@ -57,7 +57,7 @@ int main()
             rectangle.setSize(Vector2f(1, rows[i].h));
             rectangle.setPosition(Vector2f(i++, 240));
             rectangle.setRotation(180);
-            rectangle.setFillColor(Color::Blue);
+            rectangle.setFillColor(Color::Green);
             if (i == index) rectangle.setFillColor(Color::Red);
             window.draw(rectangle);
         }
