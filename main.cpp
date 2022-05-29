@@ -7,12 +7,12 @@ struct row
 {
     int x;
     int h;
-} rows[240];
+} rows[360];
 
 
 int main()
 {
-    RenderWindow window(VideoMode(240, 200), "sort");
+    RenderWindow window(VideoMode(360, 240), "sort");
     RectangleShape rectangle;
     Event event;
 
@@ -28,63 +28,34 @@ int main()
         }
         if (isCreated) 
         {
-            //int z;
-            //int j;
-
-            //while (rows[index].h > rows[index - 1].h)
-             //if(rows[index].h>rows[index+1].h)//for (int i = 1; i < rows[index].h; i++)
-            
-                 
-                //for (int i = 1; i < rows[index].h; i++) {
-                    //z = i;
-                    //j = i - 1;
-                    //while (i > rows[index - 1].h > z)
-
-                    //std::swap(rows[index].h, rows[index + 1].h);
-                    //z = rows[index].h;
-                    while (rows[index].h > rows[index + 1].h) {
-                        std::swap(rows[index].h, rows[index + 1].h);
-                    }
-                    //rows[j + 1].h = rows[index].h;
-                    //j = j - 1;
-                
-            
-
-            /*int i;
-            while (i=1 < rows[index].h)
-            {
-                if (i == 0)
-                    i++;
+             while (rows[index].h < rows[index-1].h) {
+                if (rows[index].h == 0)
+                    rows[index++].h;
                 if (rows[index].h >= rows[index - 1].h)
-                    i++;
-                else {
+                    rows[index++].h;
+               else {
                     std::swap(rows[index].h, rows[index - 1].h);
-                    i--;
+                    rows[index--].h;
+                
+
                 }
-            }*/
-
-
-            //rows[j + 1].h = z;
-            //std::swap(rows[index].h, rows[index+1].h);
-
-        }
-
+            }
         }
         if (!isCreated)
         {
-            for (int i = 0; i < 240; ++i)
+            for (int i = 0; i < 360; ++i)
             {
                 rows[i].x = i;
-                rows[i].h = 1 + rand() % 100;
+                rows[i].h = 1 + rand() % 160;
             }
             isCreated = true;
         }
 
-        window.clear(Color::Black);
-        for (int i = 0; i < 240; ++i)
+        window.clear(Color::White);
+        for (int i = 0; i < 360; ++i)
         {
             rectangle.setSize(Vector2f(1, rows[i].h));
-            rectangle.setPosition(Vector2f(i++, 200));
+            rectangle.setPosition(Vector2f(i++, 240));
             rectangle.setRotation(180);
             rectangle.setFillColor(Color::Blue);
             if (i == index) rectangle.setFillColor(Color::Red);
@@ -93,7 +64,7 @@ int main()
         window.display();
 
         index++;
-        if (index >= 240)
+        if (index >= 360)
             index = 0;
     }
 
