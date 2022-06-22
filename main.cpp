@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 
 using namespace sf;
@@ -67,6 +68,6 @@ int main()
         if (index >= 360)
             index = 0;
     }
-
+    cout << count << endl;
     return 0;
 }
